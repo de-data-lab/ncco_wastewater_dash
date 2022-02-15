@@ -65,10 +65,16 @@ chart_div <-
            )
     )
 
-footer_logos <- tags$div(class = "text-center ui card text-center",style = "position: fixed; left: 50%; bottom:0; margin: 0px 0px 10px 0px; transform: translateX(-50%); padding: 5px; width:150px;",
-                         splitLayout(cellWidths = c("20%","80%"),tags$a(href = "https://www.udel.edu/academics/colleges/canr/departments/animal-and-food-sciences/affiliated-centers/cewer/",target = "_blank",tags$img(src = "ud_logo.png",height = "100%",width = "20em")),
-                                     tags$a(href = "https://www.compassred.com",target = "_blank",tags$img(src = "cr_logo.png",height = "100%",width = "80em"))
-                         )
+footer_logos <- tags$div(
+  class = "text-center ui card text-center",
+  style = "position: fixed; left: 50%; bottom:0; margin: 0px 0px 10px 0px; transform: translateX(-50%); padding: 5px; width:150px;",
+  splitLayout(cellWidths = c("20%","80%"),
+              tags$a(href = "https://www.udel.edu/academics/colleges/canr/departments/animal-and-food-sciences/affiliated-centers/cewer/",
+                     target = "_blank",
+                     tags$img(src = "ud_logo.png", height = "100%", width = "20em")),
+              tags$a(href = "https://techimpact.org/", target = "_blank",
+                     tags$img(src = "techimpact_logo.png", height = "100%", width = "80em"))
+  )
 )
 
 chart_div2 <- column(width = 4,class = "col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-5 col-xl-4 col-xl-offset-5",
