@@ -157,7 +157,7 @@ tags$div(
   tags$h2("Relevant Links"),
   
   tags$h5("New Castle County, Delaware"),
-  tags$p(tags$a(href = "https://www.nccde.org/",target = "_blank","New Castle County Homepage"),
+  tags$p(tags$a(href = "https://www.nccde.org/", target = "_blank","New Castle County Homepage"),
          tags$br(),
          tags$p("For inquiries regarding raw data please contact Dr. Kali Kniel at Kniel@udel.edu.")),
   
@@ -165,7 +165,7 @@ tags$div(
   tags$p(tags$a(href = "https://www.udel.edu/academics/colleges/canr/departments/animal-and-food-sciences/affiliated-centers/cewer/",target = "_blank","CEWER Homepage")),
   
   tags$h5("BioBot Analytics"),
-  tags$p(tags$a(href = "https://www.biobot.io",target = "_blank","Biobot Homepage")),
+  tags$p(tags$a(href = "https://www.biobot.io", target = "_blank","Biobot Homepage")),
   
   tags$h5("CompassRed"),
   tags$p(tags$a(href = "https://www.compassred.com", target = "_blank","CompassRed Homepage"),tags$br(),
