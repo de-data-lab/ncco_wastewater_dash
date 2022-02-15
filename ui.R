@@ -168,11 +168,13 @@ tags$div(
   tags$p(tags$a(href = "https://www.biobot.io",target = "_blank","Biobot Homepage")),
   
   tags$h5("CompassRed"),
-  tags$p(tags$a(href = "https://www.compassred.com",target = "_blank","CompassRed Homepage"),tags$br(),
-  tags$a(href = "https://www.github.com/CompassRed/ncco_wastewater_dash/",target = "_blank","This Application's Code on GitHub")),
+  tags$p(tags$a(href = "https://www.compassred.com", target = "_blank","CompassRed Homepage"),tags$br(),
+  tags$a(href = "https://www.github.com/CompassRed/ncco_wastewater_dash/",
+         target = "_blank","This Application's Code on GitHub")),
   
-  tags$h5("Delaware Data Innovation Lab (DDIL)"),
-  tags$p(tags$a(href = "https://ddil.ai",target = "_blank","DDIL Homepage"))
+  tags$h5("Tech Impact, Delaware Data Innovation Lab (DDIL)"),
+  tags$p(tags$a(href = "https://techimpact.org/", target = "_blank", "Tech Impact Homepage")),
+  tags$p(tags$a(href = "https://ddil.ai", target = "_blank", "DDIL Homepage"))
   
   )),footer_logos)
 
