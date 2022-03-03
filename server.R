@@ -67,7 +67,7 @@ shinyServer(function(input, output, session) {
 # DATA LOAD ---------------------------------------------------------------
     
     download.file("https://www.nccde.org/DocumentCenter/View/38959/covidupdate", "saved_data.xlsx", mode = "wb")
-    if(Sys.getenv("LOCAL")){
+    if(Sys.getenv("LOCAL") == TRUE){
         filename <- "test_data_new.xlsx"
         print("LOCAL")
     }else{
