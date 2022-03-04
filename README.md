@@ -18,7 +18,7 @@ Additionally, QGIS was used for transforming county shape data (`geodatabase` fo
 
 ## Relevant Links
 
-- [Live app running on shinyapps.io](http://compassred.shinyapps.io/ncco_wastewater)
+- [Live app running on shinyapps.io](https://techimpact.shinyapps.io/ncco_wastewater)
 - [Raw data](http://compassred.shinyapps.io/ncco_wastewater)
 - [New Castle County, Delaware (NCCo)](https://nccde.org/)
 - [Biobot Analytics](https://www.biobot.io/)
@@ -27,3 +27,5 @@ Additionally, QGIS was used for transforming county shape data (`geodatabase` fo
 
 ## Development Notes
 Requires `.Renviron` with `LOCAL` variable set to `TRUE` or `FALSE`
+
+GitHub Action automatically deploys the main branch to the [shinyapps.io location](https://techimpact.shinyapps.io/ncco_wastewater). 
