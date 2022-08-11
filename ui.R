@@ -34,6 +34,7 @@ about_div <-
         tags$div(id = "faq_click", tags$p(tags$a("Click here to view the FAQ section", ), class = "text-center"))
       )
     )
+  )
 
 about_div2 <- about_div
 
@@ -145,55 +146,6 @@ include more targets, such as influenza virus or norovirus."),
 current models predicting prevalence rate may not be as accurate as once thought. Instead, comparing
 trends of viral concentration in wastewater compared to clinical cases provides helpful data that can be
 used to help predict the magnitude, direction and extent of the pandemic."),
-# BUILD THE UI ------------------------------------------------------------
-
-tagList(
-    shinyUI(
-        navbarPage(collapsible = TRUE,
-            selected = "overview",
-            id = "parent_page",
-            title = "NCCo COVID-19 Wastewater Testing",
-            windowTitle = "New Castle County COVID-19 Wastewater Testing Dashboard",
-            theme = shinytheme("simplex"),
-            tabPanel("Overview",value = "overview",
-                     fluidPage(
-                       tags$head(
-                         shinyjs::useShinyjs()
-                         ,use_bs_tooltip()
-                         ,tags$link(rel="stylesheet", type="text/css", href="style.css")
-                         ,tags$script(src = "semantic/semantic.js")
-                         ,tags$link(rel="stylesheet", type="text/css", href="semantic/semantic.css")
-                         ,tags$script(onload_js)
-                         ,includeHTML("www/google_analytics.html")
-                         ,tags$style(type="text/css", "#inline label{ display: table-cell; text-align: center; vertical-align: middle; } #inline .form-group { display: table-row;}")
-                       )
-                       ,fluidRow(id = "map_div2",
-                                 fillRow(leafletOutput("map2", width = "100%") %>% withSpinner(type = 4,color = "#576080"))
-                                 ,fluidRow(about_div2,chart_div2)
-                       )
-                       ,footer_logos
-                     )),
-            tabPanel("By Sampling Site",value = "map",id = "map",
-                     fluidPage(
-                       tags$head(
-                         shinyjs::useShinyjs()
-                         ,use_bs_tooltip()
-                         ,tags$link(rel="stylesheet", type="text/css", href="style.css")
-                         ,tags$script(src = "semantic/semantic.js")
-                         ,tags$link(rel="stylesheet", type="text/css", href="semantic/semantic.css")
-                         ,tags$script(onload_js)
-                         ,includeHTML("www/google_analytics.html")
-                         ,tags$style(type="text/css", "#inline label{ display: table-cell; text-align: center; vertical-align: middle; } #inline .form-group { display: table-row;}")
-                       )
-                       ,fluidRow(id = "map_div",
-                                 fillRow(leafletOutput("map", width = "100%") %>% withSpinner(type = 4,color = "#576080"))
-                                 ,fluidRow(about_div,chart_div)
-                       )
-                       ,footer_logos
-                     )),   
-            tabPanel("FAQ",value = "faq",fluidPage(faq_div)),
-            tabPanel("NCCo",value = "NCCo")
-            
     tags$h3("Where is other COVID-19-related data for Delaware?"),
     tags$p("To see more COVID-19-related information for the State of Delaware, including clinical case estimates and vaccine information, go to the ", tags$a("Delaware Health and Human Services website at coronavirus.delaware.gov.", href = "https://coronavirus.delaware.gov/", target = "_blank")),
     tags$br(), tags$br()
@@ -228,4 +180,49 @@ tagList(
 )
 
 
+# BUILD THE UI ------------------------------------------------------------
 
+
+shinyUI(
+  navbarPage(
+    selected = "overview",
+    id = "parent_page",
+    title = "NCCo COVID-19 Wastewater Testing",
+    windowTitle = "New Castle County COVID-19 Wastewater Testing Dashboard",
+    theme = shinytheme("simplex"),
+    header = tags$head(
+      shinyjs::useShinyjs(),
+      use_bs_tooltip(),
+      tags$link(rel = "stylesheet", type = "text/css", href = "style.css"),
+      # ,tags$script(src = "semantic/semantic.js")
+      tags$link(rel = "stylesheet", type = "text/css", href = "semantic/semantic.css"),
+      tags$script(onload_js),
+      includeHTML("www/google_analytics.html"),
+      tags$style(type = "text/css", "#inline label{ display: table-cell; text-align: center; vertical-align: middle; } #inline .form-group { display: table-row;}")
+    ),
+    tabPanel("Overview",
+      value = "overview", id = "overview",
+      fluidPage(
+        fluidRow(
+          id = "map_div2",
+          fillRow(leafletOutput("map2", width = "100%") %>% withSpinner(type = 4, color = "#576080")),
+          fluidRow(about_div2, chart_div2)
+        ),
+        footer_logos
+      )
+    ),
+    tabPanel("By Sampling Site",
+      value = "map", id = "map",
+      fluidPage(
+        fluidRow(
+          id = "map_div",
+          fillRow(leafletOutput("map", width = "100%") %>% withSpinner(type = 4, color = "#576080")),
+          fluidRow(about_div, chart_div)
+        ),
+        footer_logos
+      )
+    ),
+    tabPanel("FAQ", value = "faq", fluidPage(faq_div)),
+    tabPanel("NCCo", value = "NCCo")
+  )
+)
