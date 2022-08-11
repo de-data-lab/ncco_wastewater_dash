@@ -19,8 +19,8 @@ about_div <-
       tags$div(
         class = "content",
         tags$p(tags$a("View Data by Sampling Site", id = "go_to_site_tab", onclick = 'document.querySelector("a[data-value=\'map\']").click()'),
-          style = "text-align:left;",
-          tags$a("View County Overview", id = "go_to_site_tab", onclick = 'document.querySelector("a[data-value=\'overview\']").click()', style = "float:right;")
+               style = "text-align:left;",
+               tags$a("View County Overview", id = "go_to_site_tab", onclick = 'document.querySelector("a[data-value=\'overview\']").click()', style = "float:right;")
         ),
         tags$h3("About this Data", class = "text-center", style = "margin-top: 3px; margin-bottom: 3px;"),
         tags$p(tags$i("“We will look anywhere and everywhere to collect data to make this invisible enemy more visible.”", HTML("<br>"), style = "font-weight: bold;"), "– County Executive Matt Meyer", class = "text-center"),
@@ -181,47 +181,44 @@ used to help predict the magnitude, direction and extent of the pandemic."),
 
 
 # BUILD THE UI ------------------------------------------------------------
-
-
-shinyUI(
-  navbarPage(
-    selected = "overview",
-    id = "parent_page",
-    title = "NCCo COVID-19 Wastewater Testing",
-    windowTitle = "New Castle County COVID-19 Wastewater Testing Dashboard",
-    theme = shinytheme("simplex"),
-    header = tags$head(
-      shinyjs::useShinyjs(),
-      use_bs_tooltip(),
-      tags$link(rel = "stylesheet", type = "text/css", href = "style.css"),
-      tags$link(rel = "stylesheet", type = "text/css", href = "semantic/semantic.css"),
-      tags$script(onload_js),
-      includeHTML("www/google_analytics.html"),
-      tags$style(type = "text/css", "#inline label{ display: table-cell; text-align: center; vertical-align: middle; } #inline .form-group { display: table-row;}")
-    ),
-    tabPanel("Overview",
-      value = "overview", id = "overview",
-      fluidPage(
-        fluidRow(
-          id = "map_div2",
-          fillRow(leafletOutput("map2", width = "100%") %>% withSpinner(type = 4, color = "#576080")),
-          fluidRow(about_div2, chart_div2)
-        ),
-        footer_logos
-      )
-    ),
-    tabPanel("By Sampling Site",
-      value = "map", id = "map",
-      fluidPage(
-        fluidRow(
-          id = "map_div",
-          fillRow(leafletOutput("map", width = "100%") %>% withSpinner(type = 4, color = "#576080")),
-          fluidRow(about_div, chart_div)
-        ),
-        footer_logos
-      )
-    ),
-    tabPanel("FAQ", value = "faq", fluidPage(faq_div)),
-    tabPanel("NCCo", value = "NCCo")
-  )
+navbarPage(
+  selected = "overview",
+  id = "parent_page",
+  title = "NCCo COVID-19 Wastewater Testing",
+  windowTitle = "New Castle County COVID-19 Wastewater Testing Dashboard",
+  theme = shinytheme("simplex"),
+  header = tags$head(
+    shinyjs::useShinyjs(),
+    use_bs_tooltip(),
+    tags$link(rel = "stylesheet", type = "text/css", href = "style.css"),
+    tags$link(rel = "stylesheet", type = "text/css", href = "semantic/semantic.css"),
+    tags$script(onload_js),
+    includeHTML("www/google_analytics.html"),
+    tags$style(type = "text/css", "#inline label{ display: table-cell; text-align: center; vertical-align: middle; } #inline .form-group { display: table-row;}")
+  ),
+  tabPanel("Overview",
+           value = "overview", id = "overview",
+           fluidPage(
+             fluidRow(
+               id = "map_div2",
+               fillRow(leafletOutput("map2", width = "100%") %>% withSpinner(type = 4, color = "#576080")),
+               fluidRow(about_div2, chart_div2)
+             ),
+             footer_logos
+           )
+  ),
+  tabPanel("By Sampling Site",
+           value = "map", id = "map",
+           fluidPage(
+             fluidRow(
+               id = "map_div",
+               fillRow(leafletOutput("map", width = "100%") %>% withSpinner(type = 4, color = "#576080")),
+               fluidRow(about_div, chart_div)
+             ),
+             footer_logos
+           )
+  ),
+  tabPanel("FAQ", value = "faq", fluidPage(faq_div)),
+  tabPanel("NCCo", value = "NCCo")
 )
+
