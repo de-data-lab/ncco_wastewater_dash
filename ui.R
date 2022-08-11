@@ -190,6 +190,7 @@ navbarPage(
   header = tags$head(
     shinyjs::useShinyjs(),
     use_bs_tooltip(),
+    tags$script(src = "handleBrowserBackButton.js"),
     tags$link(rel = "stylesheet", type = "text/css", href = "style.css"),
     tags$link(rel = "stylesheet", type = "text/css", href = "semantic/semantic.css"),
     tags$script(onload_js),
