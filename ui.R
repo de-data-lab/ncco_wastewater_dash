@@ -194,7 +194,6 @@ shinyUI(
       shinyjs::useShinyjs(),
       use_bs_tooltip(),
       tags$link(rel = "stylesheet", type = "text/css", href = "style.css"),
-      # ,tags$script(src = "semantic/semantic.js")
       tags$link(rel = "stylesheet", type = "text/css", href = "semantic/semantic.css"),
       tags$script(onload_js),
       includeHTML("www/google_analytics.html"),
