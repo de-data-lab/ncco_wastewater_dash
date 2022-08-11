@@ -23,7 +23,6 @@ const handleBrowserBackButton = () => {
   // If the URL already has a hash
   const initialHash = window.location.hash;
   if (initialHash) {
-    console.log(initialHash);
     gotoTab(initialHash.replace("#", ""));
   }
 
