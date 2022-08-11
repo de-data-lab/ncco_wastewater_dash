@@ -7,6 +7,16 @@ const gotoTab = (tabName) => {
   // Hide all tab div's
   allTabs.forEach((tab) => tab.classList.remove("active"));
 
+  // Clean all navbar links
+  const activeNavbarLi = document.querySelector("#parent_page > li.active");
+  const activeNavbarATag = document.querySelector(
+    "#parent_page > li.active > a"
+  );
+  activeNavbarATag?.toggleAttribute("aria-selected");
+  activeNavbarLi?.classList.remove("active");
+  // Remove the focus from the navbar list item
+  document.activeElement?.blur();
+
   // Get the selected tab's div
   const targetTab = document.querySelector(
     `.tab-pane[data-value="${tabName}"]`
@@ -49,6 +59,13 @@ const handleBrowserBackButton = () => {
   window.addEventListener("popstate", () => {
     const targetTab = window.location.hash.replace("#", "");
     gotoTab(targetTab);
+    const targetNavbarATag = document.querySelector(
+      `a[data-value="${targetTab}"]`
+    );
+
+    // Color the active navbar list item
+    const targetNavbarLi = targetNavbarATag?.parentElement;
+    targetNavbarLi?.classList.add("active");
   });
 };
 handleBrowserBackButton();
