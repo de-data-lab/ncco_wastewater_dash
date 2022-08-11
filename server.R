@@ -708,10 +708,8 @@ shinyServer(function(input, output, session) {
       )
   })
 
-
-
+  
   # N NEW CASTLE CO SCORECARD -----------------------------------------------
-
   output$n_ncco_scorecard <- shiny::renderUI({
     data <- data_rc_master() %>%
       filter(station == "N. New Castle Co. Aggregate Sewer System") %>%
@@ -721,46 +719,5 @@ shinyServer(function(input, output, session) {
       HTML()
 
     tags$p(tags$span(tags$strong("———"), style = "color: black; font-weight: bolder;"), text_out)
-  })
-
-  # Create a query string specific to each tab and update
-  current_tab <- reactiveVal("overview")
-  observe({
-    current_tab(input$parent_page)
-    updateQueryString(paste0("?tab=", current_tab()))
-  })
-  
-  # Route to a specific tab when the URL includes a query string
-  current_query <- reactiveVal("overview")
-  observe({
-    # Get the query string 
-    queries <- parseQueryString(session$clientData$url_search)
-    # Get the first key-value pair from the string
-    first_query <- paste(names(queries), queries, sep = "=", collapse = ", ")
-    
-    if (first_query == "tab=overview") {
-      updateNavbarPage(session,
-                       inputId = "parent_page",
-                       selected = "map"
-      )
-    }
-
-    if (first_query == "tab=map") {
-      print("navigating to map")
-      updateNavbarPage(session,
-        inputId = "parent_page",
-        selected = "map"
-      )
-    }
-    
-    if (first_query == "tab=faq") {
-      print("navigating to FAQ")
-      updateNavbarPage(session,
-                       inputId = "parent_page",
-                       selected = "faq"
-      )
-    }
-    # Update the query reactive value
-    current_query(first_query)
   })
 })
